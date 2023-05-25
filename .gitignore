@@ -30,3 +30,5 @@
 *.exe
 *.out
 *.app
+/Progetto Lab. Algoritmi/cmake-build-debug/
+.idea
