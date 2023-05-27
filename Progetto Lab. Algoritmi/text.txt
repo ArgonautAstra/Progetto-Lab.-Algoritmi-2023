@@ -1,0 +1,38 @@
+3
+
+4
+Palermo
+Madrid
+Roma
+NewYork
+6
+Palermo Madrid 125.90
+Palermo Roma 300
+Madrid NewYork 325
+Madrid Roma 100
+Palermo NewYork 875
+Roma NewYork 175
+3 2 1 0
+
+3
+Palermo
+Montreal
+NewYork
+2
+Palermo Montreal 300
+Montreal NewYork 325
+1 0
+
+5
+Palermo
+Montreal
+Pippo
+Genova
+NewYork
+5
+Palermo Montreal 300
+Montreal NewYork 325
+Pippo Genova 200
+Palermo Genova 50
+Genova NewYork 900
+2 1 0
