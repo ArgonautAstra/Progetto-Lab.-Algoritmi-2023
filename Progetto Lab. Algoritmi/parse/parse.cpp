@@ -32,7 +32,7 @@ int atPos(const std::vector<std::string>& vec, const std::string& string){
 std::unordered_map<int,std::vector<int>> map;
 
 
-
+//todo: Prendere arco di costo minore se si hanno le stesse tranzioni
 std::vector<FlightsGraph> parseFileToGraph(std::ifstream& file) {
     std::vector<FlightsGraph> graphs;
     
