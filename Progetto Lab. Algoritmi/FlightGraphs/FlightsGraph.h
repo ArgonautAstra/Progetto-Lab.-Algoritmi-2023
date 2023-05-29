@@ -22,6 +22,7 @@ public:
     void addFlight(int departure, int destination, double cost);
     bool pointsTo(int departure, int destination);
     double costOf(int departure, int destination);
+    void setFlightCost(int departure, int destination, double newCost);
 
     friend std::ostream &operator<<(std::ostream &os, const FlightsGraph &graph);
     //void executeQuery(const vector<int> &queries);
