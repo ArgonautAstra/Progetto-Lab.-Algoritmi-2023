@@ -3,7 +3,6 @@
 //
 
 #include "FlightsGraph.h"
-#include <algorithm>
 
 FlightsGraph::FlightsGraph(const vector<string> &cities) {
     numV = cities.size();
@@ -34,17 +33,6 @@ double FlightsGraph::costOf(int departure, int destination) {
         else return res->getCost();
     }
     return 0;
-}
-
-void FlightsGraph::setFlightCost(int departure, int destination, double newCost) {
-    if(pointsTo(departure, destination)) {
-        auto l = adj.at(departure);
-        auto condition = [&destination] (FlightsEdge fl) {return fl.getArrivalVertex() == destination;};
-        auto res = std::find_if(l.begin(), l.end(), condition);
-        res->setCost(newCost);
-    }
-
-    //else throw..
 }
 
 std::ostream &operator<<(std::ostream &os, const FlightsGraph &graph) {

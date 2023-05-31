@@ -18,10 +18,11 @@ int main(){
 //    g.addFlight(2, 3, 11);
     std::ifstream file("text.txt");
     auto g = parseFileToGraph(file);
-
     for (auto vec: g) {
         std::cout << vec << std::endl;
     }
+    
+    
 
     for (auto pair: map) {
 
@@ -36,6 +37,12 @@ int main(){
         }
 
     }
+
+   
+
+
+
+
 }
 
 
