@@ -19,10 +19,6 @@ public:
         return cost;
     }
 
-    void setCost(double newCost) {
-        FlightsEdge::cost = newCost;
-    }
-
 private:
     int arrivalVertex;
     double cost;
