@@ -3,7 +3,7 @@
 #include <fstream>
 #include "FlightGraphs/FlightsGraph.h"
 #include "parse/parse.h"
-#include "ShortestPaths/ShortestsPaths.h"
+#include "PathsManager//PathsManager.h"
 
 int main(){
 //    std::vector<std::string> cities;
@@ -59,7 +59,7 @@ int main(){
     g.addFlight(3, 5, 1);
     g.addFlight(4, 5, 1);
 
-    ShortestsPaths sps(g);
+    PathsManager sps(g);
     auto sp = sps.absoluteShortestPath();
 
     std::cout << sp.first << " " << sp.second;

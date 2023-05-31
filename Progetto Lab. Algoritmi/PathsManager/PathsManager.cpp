@@ -3,9 +3,9 @@
 //
 
 #include <cfloat>
-#include "ShortestsPaths.h"
+#include "PathsManager.h"
 
-std::pair<int, double> ShortestsPaths::absoluteShortestPath() {
+std::pair<int, double> PathsManager::absoluteShortestPath() {
     auto tp = graph.topologicalSort();
     int numV = graph.getNumV();
     auto adj = graph.getAdj();
