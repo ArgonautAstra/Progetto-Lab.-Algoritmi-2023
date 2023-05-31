@@ -4,43 +4,36 @@
 
 using namespace std;
 
-#define V 100
+#define V 10
 #define INF INT_MAX
 
 // A Dynamic programming based function to find the shortest path from u to v with exactly q edges.
-int shortestPath(int graph[][V], int u, int v, int q) {
-    // Table to be filled up using DP. The value sp[i][j][e] will store
-    // weight of the shortest path from i to j with exactly q edges
-    int A[V][V], B[V][V], sp[q+1];
-    int x = 1;
+int* shortestPath(int graph[][V], int u, int v, int q) {
+    int A[V][V], B[V][V], sp[q+1], i, j, k, e;
+    short int x = 1;
 
-    for (int i = 0; i < V; i++)
+    for (i = 0; i < V; i++)
         for (int j = 0; j < V; j++)
             A[i][j] = (graph[i][j] != INF) ? graph[i][j] : INF;
 
-    for (int e = 2; e <= q; e++, x *= -1)
-        if(x == 1) {
-            B[0][0] = INF;
-            for (int i = 0; i < V; i++)
-                for (int j = 0; j < V; j++, B[i][j] = INF)
-                    for (int k = 0; k < V; k++)
+    for (e = 2; e <= q; e++, x *= -1)
+        for (i = 0; i < V; i++)
+            for (j = 0, A[i][0] = INF, B[i][0] = INF; j < V; j++, A[i][j] = INF, B[i][j] = INF)
+                for (k = 0; k < V; k++)
+                    if (x == 1) {
                         if (graph[i][k] != INF && k != i != j && A[k][j] != INF)
                             B[i][j] = min(B[i][j], graph[i][k] + A[k][j]);
-            sp[e] = B[u][v];
-        }else{
-            A[0][0] = INF;
-            for (int i = 0; i < V; i++)
-                for (int j = 0; j < V; j++,A[i][j] = INF)
-                    for (int a = 0; a < V; a++)
-                        if (graph[i][a] != INF && a != i != j && B[a][j] != INF)
-                            A[i][j] = min(A[i][j], graph[i][a] + B[a][j]);
-            sp[e] = A[u][v];
-        }
+                        sp[e] = B[u][v];
+                    } else {
+                        if (graph[i][k] != INF && k != i != j && B[k][j] != INF)
+                            A[i][j] = min(A[i][j], graph[i][k] + B[k][j]);
+                        sp[e] = A[u][v];
+                    }
 
-        for (int i = 2; i <= q; i++)
-            cout << "Total cost of flight(" << i << ") is: " << sp[i] << "$" << endl;
+    for (int i = 2; i <= q; i++)
+        cout << "Total cost of flight(" << i << ") is: " << sp[i] << "$" << endl;
 
-    return 0;
+    return sp;
 }
 
 int main(){
@@ -63,7 +56,7 @@ int main(){
     for(int i = 0; i < V-1; i++)
         for(int j = 1; j < V; j++)
             if(i != j)
-                graph[i][j] = rand() % 100 + 1;
+                graph[i][j] = rand() % 9 + 1;
 
     graph[0][V-1] = INF;
 
