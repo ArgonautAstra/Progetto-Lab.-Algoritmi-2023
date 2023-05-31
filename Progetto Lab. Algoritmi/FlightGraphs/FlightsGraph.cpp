@@ -35,6 +35,15 @@ double FlightsGraph::costOf(int departure, int destination) {
     return 0;
 }
 
+void FlightsGraph::setFlightCost(int departure, int destination, double newCost) {
+    if(pointsTo(departure, destination)) {
+        auto l = adj.at(departure);
+        auto condition = [&destination] (FlightsEdge fl) {return fl.getArrivalVertex() == destination;};
+        auto res = std::find_if(l.begin(), l.end(), condition);
+        res->setCost(newCost);
+    }
+}
+
 std::ostream &operator<<(std::ostream &os, const FlightsGraph &graph) {
     os << "Flight Graph" << std::endl;
     os << "Number of cities: " << graph.numV << std::endl;
