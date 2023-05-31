@@ -1,13 +1,25 @@
 //
 // Created by Raffaele on 26/05/2023.
 //
-
+#include <stack>
+#include <queue>
 #include "FlightsGraph.h"
+#include <float.h>
+#include <iostream>
+#include <utility>
 
 FlightsGraph::FlightsGraph(const vector<string> &cities) {
     numV = cities.size();
     this->cities = vector<string>(cities.begin(), cities.end());
     adj.resize(numV);
+}
+
+const vector<list<FlightsEdge>> &FlightsGraph::getAdj() const {
+    return adj;
+}
+
+int FlightsGraph::getNumV() const {
+    return numV;
 }
 
 void FlightsGraph::addFlight(int departure, int destination, double cost) {
@@ -55,5 +67,48 @@ std::ostream &operator<<(std::ostream &os, const FlightsGraph &graph) {
     return os;
 }
 
+vector<int> FlightsGraph::topologicalSort() {
+    //si assume che il grafo sia un DAG
+    vector<int> inDregrees(numV);
+    vector<int> topologicalSort(numV);
+    std::queue<int> zeros;
+
+    int j = 0;
+
+    //inizializzazione: calcola gli in-degrees di ogni nodo
+    for(int i = 0; i < numV; i++) {
+        auto l = adj[i];
+
+        for(auto w : l) {
+            inDregrees[w.getArrivalVertex()]++;
+        }
+    }
+
+    //trova il primo nodo con in-degree 0
+    for(int k = 0; k < numV; k++) {
+        if(inDregrees[k] == 0) {
+            zeros.push(k);
+        }
+    }
 
 
+    while(!zeros.empty())
+    {
+        int v = zeros.front();
+        zeros.pop();
+        topologicalSort[j++] = v;
+
+        //aggiorna la tabella
+        auto l = adj[v];
+
+        for(auto w : l){
+            inDregrees[w.getArrivalVertex()]--;
+            if(inDregrees[w.getArrivalVertex()] == 0){
+                zeros.push(w.getArrivalVertex());
+            }
+        }
+    }
+
+    return topologicalSort;
+
+}
