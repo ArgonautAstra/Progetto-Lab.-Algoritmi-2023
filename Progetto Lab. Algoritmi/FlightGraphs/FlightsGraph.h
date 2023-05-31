@@ -25,16 +25,20 @@ public:
     void setFlightCost(int departure, int destination, double newCost);
     friend std::ostream &operator<<(std::ostream &os, const FlightsGraph &graph);
     vector<int> topologicalSort();
+    bool hasCycle();
+
     const vector<list<FlightsEdge>> &getAdj() const;
     int getNumV() const;
 
 private:
+    bool isDag;
     vector<list<FlightsEdge>> adj;
     vector<string> cities;
     vector<double> q; //per alg. proposto
     vector<bool> marked;
+    vector<bool> beingMarked;
     int numV;
-    //void executeQueryUtil(int start, int i, double cost);
+    void dfs(int source);
 };
 
 

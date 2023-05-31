@@ -71,7 +71,7 @@ vector<int> FlightsGraph::topologicalSort() {
     //si assume che il grafo sia un DAG
     vector<int> inDregrees(numV);
     vector<int> topologicalSort(numV);
-    std::queue<int> zeros;
+    std::queue<int> zeros; // si può evitare risparmiando O(n) spazio
 
     int j = 0;
 
@@ -111,4 +111,27 @@ vector<int> FlightsGraph::topologicalSort() {
 
     return topologicalSort;
 
+}
+
+bool FlightsGraph::hasCycle() {
+    isDag = true;
+    marked = vector<bool>(numV);
+    beingMarked = vector<bool>(numV);
+    dfs(0);
+    return !isDag;
+}
+
+void FlightsGraph::dfs(int source) {
+    beingMarked[source] = true;
+    auto edges = adj.at(source);
+
+    //pre-order
+
+    for(auto edge : edges) {
+        int w = edge.getArrivalVertex();
+        if(beingMarked[w]) isDag = false;
+        else if(!marked[w]) dfs(w);
+    }
+    beingMarked[source] = false;
+    marked[source] = true;
 }

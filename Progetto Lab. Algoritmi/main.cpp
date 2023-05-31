@@ -60,7 +60,14 @@ int main(){
     g.addFlight(4, 5, 1);
 
     PathsManager sps(g);
-    auto sp = sps.absoluteShortestPath();
+    auto sp = sps.absoluteShortestPathDag();
+    auto lp = sps.absoluteLongestPathDag();
 
-    std::cout << sp.first << " " << sp.second;
+    std::cout << sp.first << " " << sp.second << std::endl;
+
+    std::cout << lp.first << " " << lp.second << std::endl;
+
+
+    //g.addFlight(3, 1, 2928);
+    std::cout << g.hasCycle() << std::endl;
 }

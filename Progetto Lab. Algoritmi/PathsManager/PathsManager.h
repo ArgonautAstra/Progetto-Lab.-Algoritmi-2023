@@ -11,9 +11,12 @@
 class PathsManager {
 public:
     PathsManager(FlightsGraph &g) : graph(g) {};
+    std::pair<int, double> absoluteShortestPathDag();
+    std::pair<int, double> absoluteLongestPathDag();
     std::pair<int, double> absoluteShortestPath();
 private:
     FlightsGraph &graph;
+    void relax(int v, FlightsEdge edge, int edgeTo[], double distTo[]);
 };
 
 #endif //PROGETTO_LAB_ALGORITMI_PATHSMANAGER_H
