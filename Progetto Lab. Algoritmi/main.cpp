@@ -4,6 +4,7 @@
 #include "FlightGraphs/FlightsGraph.h"
 #include "parse/parse.h"
 #include "PathsManager//PathsManager.h"
+#include "Data Structures/IndexMinPQ.h"
 
 int main(){
 //    std::vector<std::string> cities;
@@ -70,4 +71,9 @@ int main(){
 
     //g.addFlight(3, 1, 2928);
     std::cout << g.hasCycle() << std::endl;
+    auto spdk = sps.absoluteShortestPath();
+
+    std::cout << spdk.first << " " << spdk.second << std::endl;
+
+
 }
