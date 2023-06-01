@@ -135,3 +135,18 @@ void FlightsGraph::dfs(int source) {
     beingMarked[source] = false;
     marked[source] = true;
 }
+
+//O(n+m) time and O(n^2) space
+FlightsMatrix FlightsGraph::toMatrix() {
+    FlightsMatrix m(numV);
+
+    for(int i = 0; i < numV; i++) {
+        auto l = adj[i];
+
+        for(auto edge : l) {
+            m.addFlight(i, edge.getArrivalVertex(), edge.getCost());
+        }
+    }
+
+    return m;
+}

@@ -11,6 +11,7 @@
 #include <ostream>
 
 #include "FlightsEdge.h"
+#include "FlightsMatrix.h"
 
 using std::vector;
 using std::string;
@@ -26,6 +27,8 @@ public:
     friend std::ostream &operator<<(std::ostream &os, const FlightsGraph &graph);
     vector<int> topologicalSort();
     bool hasCycle();
+
+    FlightsMatrix toMatrix();
 
     const vector<list<FlightsEdge>> &getAdj() const;
     int getNumV() const;
