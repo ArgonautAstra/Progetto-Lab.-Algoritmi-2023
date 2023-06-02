@@ -36,23 +36,23 @@ int* shortestPath(int graph[V][V], int u, int v, int q) {
     return sp;
 }
 
-int main(){
-    int graph[V][V];
-
-    srand (time(NULL));
-
-    for(int i = 0; i < V; i++)
-        for(int j = 0; j < V; j++) {
-            if (i != j) graph[i][j] = rand() % 9 + 1;
-            if (i == j || j == 0 || i == V-1)  graph[i][j] = INF;
-            graph[0][V-1] = INF;
-        }
-
-    for(int i = 0; i < V; i++, cout <<  endl)
-        for (int j = 0; j < V; j++)
-            cout << graph[i][j] << "\t";
-
-    cout <<  endl << shortestPath(graph, 0, V-1, V-1);
-
-    return 0;
-}
+//int main(){
+//    int graph[V][V];
+//
+//    srand (time(NULL));
+//
+//    for(int i = 0; i < V; i++)
+//        for(int j = 0; j < V; j++) {
+//            if (i != j) graph[i][j] = rand() % 9 + 1;
+//            if (i == j || j == 0 || i == V-1)  graph[i][j] = INF;
+//            graph[0][V-1] = INF;
+//        }
+//
+//    for(int i = 0; i < V; i++, cout <<  endl)
+//        for (int j = 0; j < V; j++)
+//            cout << graph[i][j] << "\t";
+//
+//    cout <<  endl << shortestPath(graph, 0, V-1, V-1);
+//
+//    return 0;
+//}

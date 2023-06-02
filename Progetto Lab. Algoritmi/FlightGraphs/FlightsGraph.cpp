@@ -38,7 +38,7 @@ bool FlightsGraph::pointsTo(int departure, int destination) {
 
 double FlightsGraph::costOf(int departure, int destination) {
     if (departure >= 0 && departure <= numV && destination >= 0 && destination <= numV) {
-        auto l = adj.at(departure);
+        auto& l = adj.at(departure);
         auto condition = [&destination] (FlightsEdge fl) {return fl.getArrivalVertex() == destination;};
         auto res = std::find_if(l.begin(), l.end(), condition);
         if(res == l.end()) return 0;
@@ -49,7 +49,7 @@ double FlightsGraph::costOf(int departure, int destination) {
 
 void FlightsGraph::setFlightCost(int departure, int destination, double newCost) {
     if(pointsTo(departure, destination)) {
-        auto l = adj.at(departure);
+        auto& l = adj.at(departure);
         auto condition = [&destination] (FlightsEdge fl) {return fl.getArrivalVertex() == destination;};
         auto res = std::find_if(l.begin(), l.end(), condition);
         res->setCost(newCost);

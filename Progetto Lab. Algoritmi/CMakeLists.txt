@@ -4,4 +4,4 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 
-add_executable(main main.cpp parse/parse.cpp parse/parse.h FlightGraphs/FlightsGraph.h FlightGraphs/FlightsGraph.cpp PathsManager/PathsManager.cpp PathsManager/PathsManager.h "Data Structures/IndexMinPQ.cpp" FlightGraphs/FlightsMatrix.h FlightGraphs/FlightsMatrix.cpp)
+add_executable(main main.cpp parse/parse.cpp parse/parse.h FlightGraphs/FlightsGraph.h FlightGraphs/FlightsGraph.cpp PathsManager/PathsManager.cpp PathsManager/PathsManager.h "Data Structures/IndexMinPQ.cpp" FlightGraphs/FlightsMatrix.h FlightGraphs/FlightsMatrix.cpp STV/STV.cpp)

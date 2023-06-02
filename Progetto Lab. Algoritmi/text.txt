@@ -5,12 +5,16 @@ Palermo
 Madrid
 Roma
 NewYork
-6
+10
 Palermo Madrid 125.90
+Palermo Roma 120
 Palermo Roma 300
 Madrid NewYork 325
 Madrid Roma 100
 Palermo NewYork 875
+Palermo NewYork 200
+Palermo Roma 50
+Palermo Roma 299
 Roma NewYork 175
 3 2 1 0
 

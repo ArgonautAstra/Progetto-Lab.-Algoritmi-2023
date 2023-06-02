@@ -9,9 +9,6 @@
 #include <regex>
 #include <cstdio>
 
-
-
-
 std::vector<std::string> split(const string& input, const string& regex) {
     // passing -1 as the submatch index parameter performs splitting
     std::regex re(regex);
@@ -28,14 +25,12 @@ int atPos(const std::vector<std::string>& vec, const std::string& string){
 
 
 
-
 std::unordered_map<int,std::vector<int>> map;
 
 
-//todo: Prendere arco di costo minore se si hanno le stesse tranzioni
+
 std::vector<FlightsGraph> parseFileToGraph(std::ifstream& file) {
     std::vector<FlightsGraph> graphs;
-    
     
     if (!file.is_open()) {
         throw std::runtime_error("Error when reading file");
@@ -68,6 +63,12 @@ std::vector<FlightsGraph> parseFileToGraph(std::ifstream& file) {
             departure = atPos(cities,flights[0]);
             destination = atPos(cities, flights[1]);
             cost = std::stod(flights[2]);
+
+            if (graph.pointsTo(departure,destination)) {
+                if (graph.costOf(departure, destination) > cost) graph.setFlightCost(departure, destination, cost);
+                continue;
+            }
+            if (departure == 0 && destination == cities.size()-1) continue;
             graph.addFlight(departure,destination,cost);
         }
         graphs.emplace_back(graph);
