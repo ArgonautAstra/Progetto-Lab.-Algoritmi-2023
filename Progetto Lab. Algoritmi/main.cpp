@@ -23,7 +23,7 @@ int main(){
         auto pathsManager = PathsManager(graph);
         
         auto min = pathsManager.shortestDistanceToNy();
-        std::cout << "Delete all routes minor then " << min << std::endl;
+        std::cout << "Deletes all routes minor then " << min << std::endl;
         // Deletes no bueno queries
         for(int i = 0; i < query.size(); i++) {
             auto k = query.at(i);
