@@ -9,40 +9,10 @@
 #define V 10
 #define INF INT_MAX
 
-// A Dynamic programming based function to find the shortest path from u to v with exactly q edges.
-int* shortestPath(int graph[V][V], int u, int v, int q) {
-    int A[V][V], B[V][V], sp[q+1], i, j, k, e;
-    unsigned char x = 1;
-
-    for (i = 0; i < V; i++)
-        for ( j = 0; j < V; j++)
-            A[i][j] = (graph[i][j] != INF) ? graph[i][j] : INF;
-
-    for (e = 2; e <= q; e++, x *= -1)
-        for (i = 0; i < V; i++)
-            for (j = 0, A[i][0] = INF, B[i][0] = INF; j < V; j++, A[i][j] = INF, B[i][j] = INF)
-                for (k = 0; k < V; k++)
-                    if (x == 1) {
-                        if (graph[i][k] != INF && k != i != j && A[k][j] != INF)
-                            B[i][j] = std::min(B[i][j], graph[i][k] + A[k][j]);
-                        sp[e] = B[u][v];
-                    } else {
-                        if (graph[i][k] != INF && k != i != j && B[k][j] != INF)
-                            A[i][j] = std::min(A[i][j], graph[i][k] + B[k][j]);
-                        sp[e] = A[u][v];
-                    }
-
-    for (i = 2; i <= q; i++)
-        std::cout << "Total cost of flight(" << i << ") is: " << sp[i] << "$" << std::endl;
-
-    return sp;
-}
-
-
 
 
 int main(){
-    std::ifstream file("text.txt");
+    std::ifstream file("Texts/text.txt");
     auto graphs = parseFileToGraph(file);
 //    for (const auto& vec: graphs) {
 //        std::cout << vec << std::endl;
@@ -83,9 +53,11 @@ int main(){
         }
         auto max = query[query.size()-1];
 
-        shortestPath(graph.toMatrix(),0,V-1,max);
-        
-        
+        auto sp = pathsManager.shortestPathWithinK(max);
+
+        for(auto x : sp) {
+            std::cout << x << std::endl;
+        }
         
         
             

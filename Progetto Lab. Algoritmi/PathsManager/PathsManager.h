@@ -7,6 +7,7 @@
 
 #include "../FlightGraphs/FlightsGraph.h"
 #include <utility>
+#include <vector>
 
 class PathsManager {
 public:
@@ -14,6 +15,7 @@ public:
     std::pair<int, double> absoluteShortestPathDag();
     std::pair<int, double> absoluteShortestPath();
     int shortestDistanceToNy();
+    std::vector<double> shortestPathWithinK(int query);
 private:
     FlightsGraph &graph;
     void relax(int v, FlightsEdge edge, int edgeTo[], double distTo[]);
