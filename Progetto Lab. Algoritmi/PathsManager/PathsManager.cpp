@@ -135,6 +135,7 @@ int PathsManager::shortestDistanceToNy() {
 std::vector<double> PathsManager::shortestPathWithinK(int query) {
     int numV = graph.getNumV();
     std::vector<double> queries(query+1);
+    queries[0] = queries[1] = DBL_MAX;
     auto adjMatrix = graph.toMatrix();
 
     double A[numV][numV], B[numV][numV], sp[query+1];

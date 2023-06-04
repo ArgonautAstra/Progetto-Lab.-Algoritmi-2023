@@ -1,4 +1,4 @@
-3
+4
 
 4
 Palermo
@@ -40,3 +40,24 @@ Pippo Genova 200
 Palermo Genova 50
 Genova NewYork 900
 2 1 0
+
+5
+Palermo
+Ancona
+Bologna
+Catania
+NewYork
+12
+Palermo Ancona 100
+Palermo Bologna 300
+Palermo Catania 500
+Ancona Bologna 100
+Ancona NewYork 800
+Ancona Catania 300
+Bologna Ancona 200
+Bologna Catania 300
+Bologna NewYork 200
+Catania NewYork 100
+Catania Bologna 400
+Catania Ancona 700
+4 3 2 1 0

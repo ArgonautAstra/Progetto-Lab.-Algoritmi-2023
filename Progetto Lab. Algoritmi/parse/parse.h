@@ -3,12 +3,13 @@
 //
 #include <iostream>
 #include <string>
+#include <map>
 #include "../FlightGraphs/FlightsGraph.h"
 
 #ifndef PROGETTO_LAB_ALGORITMI_PARSE_H
 #define PROGETTO_LAB_ALGORITMI_PARSE_H
 
-extern std::unordered_map<int,std::vector<int>> map;
+extern std::map<int,std::vector<int>> map;
 
 std::vector<FlightsGraph> parseFileToGraph(std::ifstream& file);
 

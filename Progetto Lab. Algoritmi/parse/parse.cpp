@@ -25,7 +25,7 @@ int atPos(const std::vector<std::string>& vec, const std::string& string){
 
 
 
-std::unordered_map<int,std::vector<int>> map;
+std::map<int,std::vector<int>> map;
 
 
 
@@ -76,13 +76,12 @@ std::vector<FlightsGraph> parseFileToGraph(std::ifstream& file) {
         std::getline(file,line);
 
         line.erase(std::remove(line.begin(), line.end(), ' '), line.end());
-        if (line.size() >= 2){
-            line.pop_back();
+        if (line.size() >= 1){
             line.pop_back();
         }
         //std::cout << line<< std::endl;
         std::vector<int> query;
-        for (int j = 0, k=2; j < line.size(); j++,k++) {
+        for (int j = 0, k=1; j < line.size(); j++,k++) {
             query.push_back(k);
         }
         
