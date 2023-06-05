@@ -138,7 +138,7 @@ std::vector<double> PathsManager::shortestPathWithinK(int query) {
     queries[0] = queries[1] = DBL_MAX;
     auto adjMatrix = graph.toMatrix();
 
-    double A[numV][numV], B[numV][numV], sp[query+1];
+    double A[numV][numV], B[numV][numV];
     int i, j, k, e;
     unsigned char x = 1;
 

@@ -1,4 +1,4 @@
-4
+5
 
 4
 Palermo
@@ -61,3 +61,16 @@ Catania NewYork 100
 Catania Bologna 400
 Catania Ancona 700
 4 3 2 1 0
+
+4
+Palermo
+Madrid
+Roma
+NewYork
+5
+Palermo Madrid
+Palermo Roma 300
+Madrid NewYork 325
+Madrid Roma 100
+Roma NewYork 175
+3 2 1 0

@@ -5,14 +5,10 @@
 #include "parse/parse.h"
 #include "PathsManager//PathsManager.h"
 
-
-
-
-
-
 int main(){
     std::ifstream file("Texts/text.txt");
     auto graphs = parseFileToGraph(file);
+
     for (auto [scenarios, query]: map) {
         std::cout << "Scenario #" << scenarios + 1 << std::endl;
         if (query.empty()){
@@ -23,27 +19,28 @@ int main(){
         auto pathsManager = PathsManager(graph);
         
         auto min = pathsManager.shortestDistanceToNy();
-        std::cout << "Deletes all routes minor then " << min << std::endl;
-        // Deletes no bueno queries
+
+        //Cancella le query non valide
         for(int i = 0; i < query.size(); i++) {
             auto k = query.at(i);
-            if (k < min) query.erase(query.begin() + i);
+            if (k < min || k > graph.getNumV()-2){
+                query.erase(query.begin() + i);
+                std::cout << "Query " << k << " invalid: no flights" << std::endl;
+            }
         }
         
         auto max = query[query.size()-1];
         auto sp = pathsManager.shortestPathWithinK(max+1);
         
-        // inf 200 300 125 600 800
-        // 0  1   2   3   4   5
-        // 200 200 125 125 125
-        double min_print = sp[1];
-        for(int i = 2; i < sp.size(); i++) {
-            min_print = std::min(sp[i], min_print);
-            std::cout << "k=" << i-1 << " " << "Total cost of flight is: " << min_print << std::endl;
+        double minCost = sp[1];
+
+        for(int i = 2, k = 0; i < sp.size(); i++, k++) {
+            minCost = std::min(sp[i], minCost);
+            if(query[k] == i-1) {
+                std::cout << "Query" << query[k] << ": total cost of flight is: " << minCost << std::endl;
+            }
         }
-        
-        
-            
+
+        std::cout << std::endl;
     }
-    
 }

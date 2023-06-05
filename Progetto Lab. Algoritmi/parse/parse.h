@@ -13,8 +13,4 @@ extern std::map<int,std::vector<int>> map;
 
 std::vector<FlightsGraph> parseFileToGraph(std::ifstream& file);
 
-
-
-
-
 #endif //PROGETTO_LAB_ALGORITMI_PARSE_H
