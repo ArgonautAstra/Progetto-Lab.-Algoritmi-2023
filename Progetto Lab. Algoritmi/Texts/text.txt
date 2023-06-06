@@ -68,7 +68,7 @@ Madrid
 Roma
 NewYork
 5
-Palermo Madrid
+Palermo Madrid 100
 Palermo Roma 300
 Madrid NewYork 325
 Madrid Roma 100
