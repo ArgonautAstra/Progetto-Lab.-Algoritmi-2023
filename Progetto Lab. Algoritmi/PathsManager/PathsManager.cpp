@@ -146,19 +146,20 @@ std::vector<double> PathsManager::shortestPathWithinK(int query) {
         for (j = 0; j < numV; j++) {
             double cost = adjMatrix.getCostOf(i, j);
             A[i][j] = cost != DBL_MAX ? cost : DBL_MAX;
-            B[i][j] = cost != DBL_MAX ? cost : DBL_MAX;
         }
     }
 
     for (e = 2; e <= query; e++, x *= -1) {
         for (i = 0; i < numV; i++) {
-            for (j = 0, A[i][0] = DBL_MAX, B[i][0] = DBL_MAX; j < numV; j++, A[i][j] = DBL_MAX, B[i][j] = DBL_MAX) {
+            for (j = 0; j < numV; j++) {
+                A[i][j] = DBL_MAX;
+                B[i][j] = DBL_MAX;
                 for (k = 0; k < numV; k++) {
                     double cost = adjMatrix.getCostOf(i, k);
                     if (x == 1) {
                         if (cost != DBL_MAX && k != i != j && A[k][j] != DBL_MAX)
                             B[i][j] = std::min(B[i][j], cost + A[k][j]);
-                        queries[e] = B[0][numV-1]; //TODO: queries[e-1] per numero vertici ?
+                        queries[e] = B[0][numV-1];
                     } else {
                         if (cost != DBL_MAX && k != i != j && B[k][j] != DBL_MAX)
                             A[i][j] = std::min(A[i][j], cost + B[k][j]);
